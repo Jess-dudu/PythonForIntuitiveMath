@@ -74,7 +74,7 @@ ex_col1, ex_col2 = st.columns(2)
 with ex_col1:
     st.write("**Hanging Cable**")
     st.latex(r"y = c + a \cosh(x/a)")
-    st.write("Cable's potential energy is minimizzed")
+    st.write("Min potential energy for uniform cable")
     st.image("assets/images/hyperbolic/HangingCable.png", width = 300)
 
 with ex_col2:

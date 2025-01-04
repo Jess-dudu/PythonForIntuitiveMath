@@ -54,15 +54,17 @@ st.latex(r'''
 
 st.write("\n")
 
-option = st.selectbox(
-    'Select the hyperbolic function to plot?',
-    ('cosh', 'sinh', 'tanh'),
-    index = 2 # default tanh
-    )
-
 fig_col1, fig_col2 = st.columns(2)
 with fig_col1:
-    fig = plot_hyperbolic_funcs(1.0, option)
+    option = st.selectbox(
+        'Select the hyperbolic function to plot?',
+        ('cosh', 'sinh', 'tanh'),
+        index = 2 # default tanh
+        )
+
+    a = st.slider(f'y = a * {option}(x/a), set a = ', min_value=0.2, max_value=2.0, value=1.0, step=0.1)
+
+    fig = plot_hyperbolic_funcs(a, option)
     # ...
     st.pyplot(fig) # instead of plt.show()
 

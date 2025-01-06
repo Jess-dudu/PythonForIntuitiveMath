@@ -15,12 +15,17 @@ topic1_hyperbolic = st.Page(
     icon=":material/interactive_space:",
 )
 
+topic2_analytic_geometry = st.Page(
+    page="topics/2_analytic_geometry.py",
+    title="Analytic Geometry",
+    icon=":material/interactive_space:",
+)
 
 # --- Navigation Setup with Sections ---
 pg = st.navigation(
     {
         "Info": [home_page],
-        "Topics": [topic1_hyperbolic],
+        "Topics": [topic1_hyperbolic, topic2_analytic_geometry],
     }
 )
 

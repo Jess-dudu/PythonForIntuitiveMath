@@ -21,11 +21,18 @@ topic2_analytic_geometry = st.Page(
     icon=":material/interactive_space:",
 )
 
+topic3_polynomial = st.Page(
+    page="topics/3_quadratics_and_optimization.py",
+    title="Quadratics and Optimization",
+    icon=":material/interactive_space:",
+)
+
+
 # --- Navigation Setup with Sections ---
 pg = st.navigation(
     {
         "Info": [home_page],
-        "Topics": [topic1_hyperbolic, topic2_analytic_geometry],
+        "Topics": [topic1_hyperbolic, topic2_analytic_geometry, topic3_polynomial],
     }
 )
 

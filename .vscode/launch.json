@@ -7,13 +7,14 @@
 
         {
             "name": "Python:Streamlit",
-            "type": "python",
+            "type": "debugpy",
             "request": "launch",
             "module": "streamlit",
-            "console": "integratedTerminal",
             "args": [
                 "run",
-                "app/python_math_app.py"
+                "${file}",
+                "--server.port",
+                "2000"
             ]
         }
     ]

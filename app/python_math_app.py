@@ -4,7 +4,7 @@ import streamlit as st
 
 home_page = st.Page(
     page="topics/home.py",
-    title="About This App",
+    title="Python for Intuitive Math",
     icon=":material/home:",
     default=True,
 )
@@ -21,7 +21,7 @@ topic2_analytic_geometry = st.Page(
     icon=":material/interactive_space:",
 )
 
-topic3_polynomial = st.Page(
+topic3_quadratics = st.Page(
     page="topics/3_quadratics_and_optimization.py",
     title="Quadratics and Optimization",
     icon=":material/interactive_space:",
@@ -31,8 +31,8 @@ topic3_polynomial = st.Page(
 # --- Navigation Setup with Sections ---
 pg = st.navigation(
     {
-        "Info": [home_page],
-        "Topics": [topic1_hyperbolic, topic2_analytic_geometry, topic3_polynomial],
+        "Home": [home_page],
+        "Topics": [topic3_quadratics, topic1_hyperbolic, topic2_analytic_geometry],
     }
 )
 

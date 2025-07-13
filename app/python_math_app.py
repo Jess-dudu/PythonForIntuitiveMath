@@ -27,12 +27,19 @@ topic3_quadratics = st.Page(
     icon=":material/interactive_space:",
 )
 
+tool1_loan_calculator = st.Page(
+    page="tools/1_loan_calculator.py",
+    title="Loan Calculator",
+    icon=":material/attach_money:",
+)
+
 
 # --- Navigation Setup with Sections ---
 pg = st.navigation(
     {
         "Home": [home_page],
         "Topics": [topic3_quadratics, topic1_hyperbolic, topic2_analytic_geometry],
+        "Tools": [tool1_loan_calculator],
     }
 )
 

@@ -72,16 +72,42 @@ with fig_col2:
 
 st.header("Optimization Using Quadratic Functions")
 
-st.markdown(r'''We can see that quadratic functions have global min/max values for specific $x$. Many real-world problems 
-            can be formulated as quadratic functions, hence we can find specific $x$ value to optimize the output.
+st.markdown(r'''Quadratic functions have global min/max values for specific $x$. Many real-world problems 
+            can be formulated as quadratic functions, hence we can find specific $x$ value to optimize
+            (i.e., minimize or maximize) the output.
             ''')
 
-st.text("Problem 1: what is the biggest possible area of a rectangle formed by 100m fence with one side against the cliff?")
+st.markdown("Problem 1: &nbsp;&nbsp;&nbsp;&nbsp;what is the biggest possible area of a rectangle formed by 100m fence with one side against the cliff?")
 st.latex(r'''\qquad Area = x \cdot y, \quad 2x + y = 100, \quad x, y > 0''')
 st.write("\n")
 
-st.text("Problem 2: prove that arithmetic mean is greater than or equal to geometric mean.")
+st.markdown("Problem 2: &nbsp;&nbsp;&nbsp;&nbsp;prove that arithmetic mean is greater than or equal to geometric mean.")
 st.latex(r'''\qquad \frac{x + y}{2} \geq \sqrt{xy}, \quad x, y > 0''')
+st.write("\n")
+
+st.header("Principal Square Root")
+
+st.markdown(r'''A square root of $x$ is a number $r$ whose square is $x$ (i.e., $r^2 = x$). Every positive 
+            number has two square roots (e.g., both $+5$ and $-5$ are sqaure roots of $25$). 
+            ''')
+
+st.markdown(r'''When working with unknowns, it gets a bit tricky since we don't know the value of the unknown 
+            yet. The principal square root of unknown variable needs to take the absolute value:
+            ''')
+
+st.latex(r'''\qquad \sqrt{a^2} = |a|, \quad a \in \mathbb{R}''')
+
+st.markdown(r'''The following problems are designed to test your understanding of the principal square root and its properties:
+            ''')
+
+st.markdown("**Problem 3: &nbsp;&nbsp;&nbsp;&nbsp;AMC10 2022 A (6)**")
+st.markdown(r"Which expression is equal to $\left| a-2-\sqrt{(a-1)^2} \right|$ for $a<0?$")
+st.latex(r'''\qquad \textbf{(A) } 3-2a \qquad \textbf{(B) } 1-a \qquad \textbf{(C) } 1 \qquad \textbf{(D) } a+1 \qquad \textbf{(E) } 3''')
+st.write("\n")
+
+st.markdown("**Problem 4: &nbsp;&nbsp;&nbsp;&nbsp;AMC10 2000 (9) (slightly modified version)**")
+st.markdown(r"If $(x-2)^2 = p$, where $x<2$, then $x - \sqrt{p} = ?$")
+st.latex(r'''\qquad \textbf{(A)}\ -2 \qquad\textbf{(B)}\ 2 \qquad\textbf{(C)}\ 2-2 \sqrt{p} \qquad\textbf{(D)}\ 2 \sqrt{p}-2 \qquad\textbf{(E)}\ |2 \sqrt{p}-2|''')
 st.write("\n")
 
 st.header("Vieta's Formulas")
@@ -97,61 +123,45 @@ st.latex(r'''\qquad r_1 r_2 + r_1 r_3 + \dotsb + r_{n-1} r_n = (-1)^2 \cdot \fra
 st.latex(r'''\qquad \dotsb''')
 st.latex(r'''\qquad r_1 r_2 \dotsb r_n = (-1)^n \cdot \frac{a_0}{a_n}''')
 
-st.markdown(r"Problem 3: $r_1$, $r_2$ and $r_3$ are the roots of $2 x^3 + 6 x^2 - 5 x + 2 = 0$, answer the following questions:")
+st.markdown(r"**Problem 5**: &nbsp;&nbsp;&nbsp;&nbsp;$r_1$, $r_2$ and $r_3$ are the roots of $2 x^3 + 6 x^2 - 5 x + 2 = 0$, answer the following questions:")
 st.latex(r'''\qquad r_1 + r_2 + r_3 = ?''')
 st.latex(r'''\qquad r_1 \cdot r_2 \cdot r_3 = ?''')
 st.latex(r'''\qquad r_1 \cdot r_2 + r_1 \cdot r_3 + r_2 \cdot r_3 = ?''')
 st.latex(r'''\qquad \frac{1}{r_1} + \frac{1}{r_2} + \frac{1}{r_3} = ?''')
 st.latex(r'''\qquad  r_1 ^2 + r_2 ^2 + r_3 ^ 2 = ?''')
 st.latex(r'''\qquad  r_1 ^3 + r_2 ^3 + r_3 ^3 = ? \qquad \text{hint: Power reduction trick}''')
+st.write("\n")
 
 st.subheader("Related problems from AMC 10/12")
 
 st.markdown("**AMC10 2002 A (14)**")
 st.markdown(r"Both roots of the quadratic equation $x^2 - 63x + k = 0$ are prime numbers. The number of possible values of $k$ is")
-st.latex(r'''\text{(A)}\ 0 \qquad \text{(B)}\ 1 \qquad \text{(C)}\ 2 \qquad \text{(D)}\ 4 \qquad \text{(E) more than 4}''')
+st.latex(r'''\qquad \text{(A)}\ 0 \qquad \text{(B)}\ 1 \qquad \text{(C)}\ 2 \qquad \text{(D)}\ 4 \qquad \text{(E) more than 4}''')
 st.write("\n")
 
 st.markdown("**AMC10 2002 B (10)**")
 st.markdown(r"Suppose that $a$ and $b$ are nonzero real numbers, and that the equation $x^2+ax+b=0$ has solutions $a$ and $b$. What is the pair $(a,b)$?")
-st.latex(r'''\mathrm{(A) \ } (-2,1)\qquad \mathrm{(B) \ } (-1,2)\qquad \mathrm{(C) \ } (1,-2)\qquad \mathrm{(D) \ } (2,-1)\qquad \mathrm{(E) \ } (4,4)''')
+st.latex(r'''\qquad \mathrm{(A) \ } (-2,1)\qquad \mathrm{(B) \ } (-1,2)\qquad \mathrm{(C) \ } (1,-2)\qquad \mathrm{(D) \ } (2,-1)\qquad \mathrm{(E) \ } (4,4)''')
 st.write("\n")
 
 st.markdown("**AMC10 2022 B (7)**")
 st.markdown(r"For how many values of the constant $k$ will the polynomial $x^{2}+kx+36$ have two distinct integer roots?")
-st.latex(r'''\textbf{(A)}\ 6 \qquad\textbf{(B)}\ 8 \qquad\textbf{(C)}\ 9 \qquad\textbf{(D)}\ 14 \qquad\textbf{(E)}\ 16''')
+st.latex(r'''\qquad \textbf{(A)}\ 6 \qquad\textbf{(B)}\ 8 \qquad\textbf{(C)}\ 9 \qquad\textbf{(D)}\ 14 \qquad\textbf{(E)}\ 16''')
 st.write("\n")
 
 st.markdown("**AMC10 2006 B (14)**")
 st.markdown(r"Let $a$ and $b$ be the roots of the equation $x^2-mx+2=0$. Suppose that $a+(1/b)$ and $b+(1/a)$ are the roots of the equation $x^2-px+q=0$. What is $q$?")
-st.latex(r'''\mathrm{(A) \ } \frac{5}{2}\qquad \mathrm{(B) \ } \frac{7}{2}\qquad \mathrm{(C) \ } 4\qquad \mathrm{(D) \ } \frac{9}{2}\qquad \mathrm{(E) \ } 8''')
+st.latex(r'''\qquad \mathrm{(A) \ } \frac{5}{2}\qquad \mathrm{(B) \ } \frac{7}{2}\qquad \mathrm{(C) \ } 4\qquad \mathrm{(D) \ } \frac{9}{2}\qquad \mathrm{(E) \ } 8''')
 st.write("\n")
 
 st.markdown("**AMC10 2022 A (16)**")
 st.markdown(r"The roots of the polynomial $10x^3 - 39x^2 + 29x - 6$ are the height, length, and width of a rectangular box (right rectangular prism). A new rectangular box is formed by lengthening each edge of the original box by $2$ units. What is the volume of the new box?")
-st.latex(r'''\textbf{(A) } \frac{24}{5} \qquad \textbf{(B) } \frac{42}{5} \qquad \textbf{(C) } \frac{81}{5} \qquad \textbf{(D) } 30 \qquad \textbf{(E) } 48''')
+st.latex(r'''\qquad \textbf{(A) } \frac{24}{5} \qquad \textbf{(B) } \frac{42}{5} \qquad \textbf{(C) } \frac{81}{5} \qquad \textbf{(D) } 30 \qquad \textbf{(E) } 48''')
 st.write("\n")
 
 st.markdown("**AMC10 2000 (24)**")
 st.markdown(r"Let $f$ be a function for which $f(\frac{x}{3}) = x^2 + x + 1$. Find the sum of all values of $z$ for which $f(3z) = 7$")
-st.latex(r"\textbf{(A)}\ -\frac{1}{3} \qquad\textbf{(B)}\ -\frac{1}{9} \qquad\textbf{(C)}\ 0 \qquad\textbf{(D)}\ \frac{5}{9} \qquad\textbf{(E)}\ \frac{5}{3}")
-st.write("\n")
-
-st.subheader("Square root principle and some related problems")
-
-st.markdown(r'''A square root of a number (e.g., $a^2$) is the solution of the equation $x^2 = a^2$. Every positive 
-            number has two square roots (e..g, $\pm \sqrt{a^2}$). $\sqrt{a^2}$ is defined as the principal  
-            square root (the non-negative one). Hence we have $\sqrt{a^2} = |a|$.
-            ''')
-
-st.markdown("**AMC10 2000 (9) (slightly modified version)**")
-st.markdown(r"If $(x-2)^2 = p$, where $x<2$, then $x - \sqrt{p} = ?$")
-st.latex(r'''\textbf{(A)}\ -2 \qquad\textbf{(B)}\ 2 \qquad\textbf{(C)}\ 2-2 \sqrt{p} \qquad\textbf{(D)}\ 2 \sqrt{p}-2 \qquad\textbf{(E)}\ |2 \sqrt{p}-2|''')
-st.write("\n")
-
-st.markdown("**AMC10 2022 A (6)**")
-st.markdown(r"Which expression is equal to $\left| a-2-\sqrt{(a-1)^2} \right|$ for $a<0?$")
-st.latex(r'''\textbf{(A) } 3-2a \qquad \textbf{(B) } 1-a \qquad \textbf{(C) } 1 \qquad \textbf{(D) } a+1 \qquad \textbf{(E) } 3''')
+st.latex(r"\qquad \textbf{(A)}\ -\frac{1}{3} \qquad\textbf{(B)}\ -\frac{1}{9} \qquad\textbf{(C)}\ 0 \qquad\textbf{(D)}\ \frac{5}{9} \qquad\textbf{(E)}\ \frac{5}{3}")
 st.write("\n")
 
 

@@ -23,7 +23,8 @@ if monthly_rate > 0:
 else:
     payment = loan_amount / n_payments
 
-st.write("### Repayments")
+st.write("\n")
+st.write("### Load Summary")
 
 col1, col2, col3 = st.columns(3)
 col1.metric(label="Down Payment", value=f"${down_payment:,.2f}")

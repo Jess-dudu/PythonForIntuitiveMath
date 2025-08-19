@@ -27,6 +27,12 @@ topic3_quadratics = st.Page(
     icon=":material/interactive_space:",
 )
 
+topic11_uam = st.Page(
+    page="topics/11_physics_uam.py",
+    title="Uniformly Accelerated Motion",
+    icon=":material/interactive_space:",
+)
+
 tool1_loan_calculator = st.Page(
     page="tools/1_loan_calculator.py",
     title="Loan Calculator",
@@ -38,7 +44,7 @@ tool1_loan_calculator = st.Page(
 pg = st.navigation(
     {
         "Home": [home_page],
-        "Topics": [topic3_quadratics, topic1_hyperbolic, topic2_analytic_geometry],
+        "Topics": [topic3_quadratics, topic1_hyperbolic, topic2_analytic_geometry, topic11_uam],
         "Tools": [tool1_loan_calculator],
     }
 )

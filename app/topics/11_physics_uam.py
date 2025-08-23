@@ -14,8 +14,8 @@ st.markdown('''<style> .katex-html { text-align: left; } </style>''', unsafe_all
 
 st.subheader("Graphing Uniformly Accelerated Motion")
 
-st.latex(r"\qquad v(t) = v_0 + a t")
-st.latex(r"\qquad x(t) = v_0 t + \frac{1}{2} a t^2")
+st.latex(r"\qquad Velocity: \quad v(t) = v_i + a t")
+st.latex(r"\qquad Position: \quad x(t) = v_i t + \frac{1}{2} a t^2")
 st.write("\n")
 
 in_col1, in_col2, in_col3 = st.columns(3)
@@ -72,15 +72,15 @@ with col2:
 st.subheader("Understanding UAM with Velocity-Time Graphs")
 
 st.markdown(r'''There are five variables in uniformly accelerated motion (UAM). They are 
-    initial velocity ($v_0$), final velocity ($v_t$), acceleration ($a$), time of 
-    acceleration ($t$), and displacement ($\Delta x$). The graph forms a trapezoid, 
-    where the area of shaded region is the total displacement. 
+    initial velocity ($v_i$), final velocity ($v_f$), acceleration ($a$), time of 
+    acceleration ($t$), and displacement ($\Delta x$). The velocity/time graph forms a 
+    trapezoid, where the area of shaded region is the total displacement. 
     ''')
 
 col1, col2 = st.columns([0.5, 0.5])
 with col1:
-    st.markdown(r"- $v_0$ = " + rf"{v0} (trapezoid top)")
-    st.markdown(r"- $v_t$ = " + rf"{v[-1]} (trapezoid base)")
+    st.markdown(r"- $v_i$ = " + rf"{v0} (trapezoid top)")
+    st.markdown(r"- $v_f$ = " + rf"{v[-1]} (trapezoid base)")
     st.markdown(r"- $a$ = " + rf"{a} (velocity slope)")
     st.markdown(r"- $t$ = " + rf"{t_max} (trapezoid height)")
     st.markdown(r"- $\Delta x$ = " + rf"{x[-1]} (trapezoid area)")
@@ -103,11 +103,45 @@ with col2:
 
 st.subheader("Derivation of Common UAM Equations")
 
-st.markdown(r'''Starting from rest: $v_0 = 0$, trapezoid simplifies to a right angle triangle''')
-st.markdown(r'''- $v_t = a t \qquad \quad$ ($v_t$ is triangle height and $t$ is triangle base)''')
-st.markdown(r'''- $\Delta x = \frac{1}{2} v_t t = \frac{1}{2} a t^2 \quad$ ($\Delta x$ is triangle area)''')
-st.markdown(r'''General case: $v_0 \neq 0$''')
-st.markdown(r'''- $v_t = v_0 + a t \quad \Leftrightarrow \quad a = (v_t - v_0)/t$''')
-st.markdown(r'''- $\Delta x = v_0 t + \frac{1}{2} a t^2 \quad$ (sum of rectangle and triangle area)''')
-st.markdown(r'''- $\Delta x = \frac{1}{2} (v_0 + v_t) t \quad$ (trapezoid area)''')
-st.markdown(r'''- $2 a \Delta x = (v_0 + v_t) a t = (v_t + v_0) (v_t - v_0)= {v_t}^2 - {v_0}^2\quad$ (substritute $t = (v_t - v_0)/a$)''')
+st.markdown(r'''Starting from rest: $v_i = 0$, trapezoid simplifies to a right angle triangle''')
+st.markdown(r'''- $v_f = a t \qquad \quad$ ($v_f$ is triangle height and $t$ is triangle base)''')
+st.markdown(r'''- $\Delta x = \frac{1}{2} v_f t = \frac{1}{2} a t^2 \quad$ ($\Delta x$ is triangle area)''')
+st.markdown(r'''General case: $v_i \neq 0$''')
+st.markdown(r'''- $v_f = v_0 + a t \quad \Leftrightarrow \quad a = (v_f - v_i)/t$''')
+st.markdown(r'''- $\Delta x = v_i t + \frac{1}{2} a t^2 \quad$ (sum of rectangle and triangle area)''')
+st.markdown(r'''- $\Delta x = \frac{1}{2} (v_i + v_f) t \quad$ (trapezoid area)''')
+st.markdown(r'''- $2 a \Delta x = (v_i + v_f) a t = (v_f + v_i) (v_f - v_i)= {v_f}^2 - {v_i}^2\quad$ (substritute $t = (v_f - v_i)/a$)''')
+
+st.subheader("Some Related Problems")
+
+st.markdown(r"**Problem 1:**")
+st.markdown(r'''A body is dropped from rest. The last third of the distance before 
+            it hits the ground is covered in time T. Show that the time taken for 
+            the entire fall to the ground is 5.45T.''')
+st.write("\n")
+
+st.markdown(r"**Problem 2: $F=ma$ Exam 2021 (5)**")
+st.markdown(r'''A train starts from city A and stops in city B. The distance between the cities is $s$. The train’s
+maximal acceleration is $a1$ and its maximal deceleration is $a2$ (in absolute value). What is the
+shortest time in which the train can travel between A and B ?''')
+st.latex(r'''
+         \quad \mathrm{(A) \ } 2 \sqrt{\frac{s}{a_1 + a_2}}
+         \quad \mathrm{(B) \ } 2 \sqrt{\frac{s}{\sqrt{a_1 a_2}}}
+         \quad \mathrm{(C) \ } \sqrt{\frac{2 s (a_1 + a_2)}{a_1 a_2}}
+         \quad \mathrm{(D) \ } \sqrt{\frac{2 s a_2}{a_1 (a_1 + a_2)}}
+         ''')
+st.markdown(r"""Answer: C""")
+st.write("\n")
+
+st.markdown(r"**Problem 3:**")
+st.markdown(r'''
+            A parachutist is descending at a constant speed of 10 feet per second. 
+            When she is at a height of 900 feet, her friend, directly below her, 
+            throws an apple up to her. What is the least speed at which he must throw 
+            the apple in order for it to reach her? How long does it take to reach her, 
+            what height is she at then, and what is the relative speed of parachutist 
+            and apple? Assume $g=32 ft/s^2$. Neglect air resistance for the apple 
+            (but not for the parachutist!)
+            ''')
+st.markdown(r"""Answer:230ft/s, 7.5s, 825 ft, 0ft/s.""")
+st.write("\n")

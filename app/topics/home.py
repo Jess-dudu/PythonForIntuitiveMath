@@ -7,7 +7,9 @@ st.write('''
          Math topics with interactive graphing, visualization, data analysis & simulation. 
          For better accessiblity through cloud server, this project is switched to utilize 
          streamlit and served on cloud web server:  \n
-         https://pythonforintuitivemath.streamlit.app/.
+
+         - Hugging Face Server: https://huggingface.co/spaces/Jess-dudu/IntuitiveMath
+         - Streamlit Server: https://pythonforintuitivemath.streamlit.app/.
          ''')
 
 st.write("\n")

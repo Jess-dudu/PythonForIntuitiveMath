@@ -122,7 +122,7 @@ st.write("\n")
 
 st.markdown(r"**Problem 2: $F=ma$ Exam 2021 (5)**")
 st.markdown(r'''A train starts from city A and stops in city B. The distance between the cities is $s$. The train’s
-maximal acceleration is $a1$ and its maximal deceleration is $a2$ (in absolute value). What is the
+maximal acceleration is $a_1$ and its maximal deceleration is $a_2$ (in absolute value). What is the
 shortest time in which the train can travel between A and B ?''')
 st.latex(r'''
          \quad \mathrm{(A) \ } 2 \sqrt{\frac{s}{a_1 + a_2}}

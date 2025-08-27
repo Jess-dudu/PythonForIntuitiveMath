@@ -8,6 +8,10 @@
 	// "features": {},
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
 	// "forwardPorts": [2000],
+	"runArgs": [ 
+		"--network=host" 
+	],
+
 	// .ssh folder mounting to support git push/pull in container
 	"mounts": [
 		"source=${localEnv:HOME}/.ssh,target=/home/vscode/.ssh,type=bind,consistency=cached"

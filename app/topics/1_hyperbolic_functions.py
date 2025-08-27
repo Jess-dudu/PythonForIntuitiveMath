@@ -15,18 +15,18 @@ def plot_hyperbolic_funcs(a, option='tanh'): # cosh/sinh/tanh
     plt.xlim(-5, 5)
 
     if option == 'sinh': # sinh
-        plt.plot(x, func_exp_p(x), 'k:', lw = 1) 
-        plt.plot(x, func_exp_n(x), 'k--', lw = 1) 
+        plt.plot(x, func_exp_p(x), ':', lw = 1) 
+        plt.plot(x, func_exp_n(x), '--', lw = 1) 
         plt.plot(x, func_sinh(x), lw=2, color ='red')   # sinh
         plt.legend(['  a * exp(x/a) / 2', '- a * exp(-x/a) / 2', '  a * sinh(x/a)']) 
     elif option == 'cosh': # cosh
-        plt.plot(x, func_exp_p(x), 'k:', lw = 1) 
-        plt.plot(x, -func_exp_n(x), 'k--', lw = 1) 
+        plt.plot(x, func_exp_p(x), ':', lw = 1) 
+        plt.plot(x, -func_exp_n(x), '--', lw = 1) 
         plt.plot(x, func_cosh(x), lw=2, color ='blue')  # cosh
         plt.legend(['  a * exp(x/a) / 2', '  a * exp(-x/a) / 2', '  a * cosh(x/a)']) 
     else: # tanh
-        plt.plot(x, func_sinh(x), 'k:', lw=2, color ='red')   # sinh
-        plt.plot(x, func_cosh(x), 'k--', lw=2, color ='blue')  # cosh
+        plt.plot(x, func_sinh(x), ':', lw=2, color ='red')   # sinh
+        plt.plot(x, func_cosh(x), '--', lw=2, color ='blue')  # cosh
         plt.plot(x, func_tanh(x), lw=2, color ='green') # tanh
         plt.legend(['  a * sinh(x/a)', '  a * cosh(x/a)', '  a * tanh(x/a)'])
 

@@ -1,3 +1,17 @@
+---
+title: IntuitiveMath
+emoji: ??
+colorFrom: red
+colorTo: red
+sdk: docker
+app_port: 8501
+tags:
+- streamlit
+pinned: false
+short_description: Python for Intuitive Math
+license: apache-2.0
+---
+
 # Python For Intuitive Math
 
 Learn and study math/physics with Python. This project started with IPython Notebook 

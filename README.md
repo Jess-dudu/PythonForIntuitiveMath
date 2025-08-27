@@ -15,13 +15,13 @@ license: apache-2.0
 # Python For Intuitive Math
 
 Learn and study math/physics with Python. This project started with IPython Notebook 
-to help demonstrating and understanding Math topics with interactive graphing, 
+to help demonstrating and understanding Math/Physics concepts with interactive graphing, 
 visualization, data analysis & simulation. 
 
 For better accessiblity through web browser, the project is switched to utilize 
-streamlit instead. It is deployed on two cloud servers:
-- Hugging Face: https://huggingface.co/spaces/Jess-dudu/IntuitiveMath 
-- Streamlit cloud server: https://pythonforintuitivemath.streamlit.app/ 
+streamlit instead. It is currently deployed onto two cloud servers:
+- Hugging Face Space: https://huggingface.co/spaces/Jess-dudu/IntuitiveMath 
+- Streamlit Cloud Server: https://pythonforintuitivemath.streamlit.app/ 
 
 Here are some topics created:
 - Quadratics and Optimization

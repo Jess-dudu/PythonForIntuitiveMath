@@ -5,11 +5,11 @@ st.title("Python for Intuitive Math")
 st.write('''
          This project started with IPython Notebook to help demonstrating and understanding 
          Math topics with interactive graphing, visualization, data analysis & simulation. 
-         For better accessiblity through cloud server, this project is switched to utilize 
-         streamlit and served on cloud web server:  \n
+         For better accessiblity and interaction, this project is switched to utilize 
+         streamlit and deployed onto cloud servers:  \n
 
-         - Hugging Face Server: https://huggingface.co/spaces/Jess-dudu/IntuitiveMath
-         - Streamlit Server: https://pythonforintuitivemath.streamlit.app/.
+         - Hugging Face Space: https://huggingface.co/spaces/Jess-dudu/IntuitiveMath
+         - Streamlit Server: https://pythonforintuitivemath.streamlit.app/
          ''')
 
 st.write("\n")

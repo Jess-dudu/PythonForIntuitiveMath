@@ -3,10 +3,10 @@ import streamlit as st
 st.title("Python for Intuitive Math")
 
 st.write('''
-         This project started with IPython Notebook to help demonstrating and understanding 
-         Math topics with interactive graphing, visualization, data analysis & simulation. 
-         For better accessiblity and interaction, this project is switched to utilize 
-         streamlit and deployed onto cloud servers:  \n
+         This project started with IPython Notebook on Google Colab to help demonstrating 
+         and understanding Math topics with interactive graphing, visualization, data 
+         analysis & simulation. For better accessiblity and interaction, this project is 
+         switched to utilize streamlit and deployed onto following two cloud servers:  \n
 
          - Hugging Face Space: https://huggingface.co/spaces/Jess-dudu/IntuitiveMath
          - Streamlit Server: https://pythonforintuitivemath.streamlit.app/

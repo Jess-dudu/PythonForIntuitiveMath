@@ -1,0 +1,125 @@
+import streamlit as st
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy.integrate import odeint
+
+# ---- Epidemic Models ----
+def sir_model(y, t, N, beta, gamma):
+    S, I, R = y
+    dSdt = -beta * S * I / N
+    dIdt = beta * S * I / N - gamma * I
+    dRdt = gamma * I
+    return dSdt, dIdt, dRdt
+
+def seir_model(y, t, N, beta, sigma, gamma):
+    S, E, I, R = y
+    dSdt = -beta * S * I / N
+    dEdt = beta * S * I / N - sigma * E
+    dIdt = sigma * E - gamma * I
+    dRdt = gamma * I
+    return dSdt, dEdt, dIdt, dRdt
+
+def sidr_model(y, t, N, beta, gamma, theta):
+    S, I, D, R = y
+    dSdt = -beta * S * I / N
+    dIdt = beta * S * I / N - (gamma + theta) * I
+    dDdt = theta * I
+    dRdt = gamma * I
+    return dSdt, dIdt, dDdt, dRdt
+
+def seird_model(y, t, N, beta, sigma, gamma, theta):
+    S, E, I, D, R = y
+    dSdt = -beta * S * I / N
+    dEdt = beta * S * I / N - sigma * E
+    dIdt = sigma * E - (gamma + theta) * I
+    dDdt = theta * I
+    dRdt = gamma * I
+    return dSdt, dEdt, dIdt, dDdt, dRdt
+
+
+st.markdown('''<style> .katex-html { text-align: left; } </style>''', unsafe_allow_html=True)
+
+st.title("Differential Equations")
+st.subheader("Epidemic Models (SIR, SEIR, SIDR, SEIRD)")
+
+st.write(r'''Differential equations can be used to model the spread of infectious diseases in a population. 
+         Here we implement four common models: SIR, SEIR, SIDR, and **SEIRD**.''')
+st.markdown(r" - **Susceptible (S)**: $$\frac{dS}{dt} = - \beta \frac{S I}{N}$$, where $$\beta$$ is the infection rate.")
+st.markdown(r" - **Exposed (E)**: $$\frac{dE}{dt} = \beta \frac{S I}{N} - \sigma E$$, where $$\sigma$$ is the incubation rate (in SEIR/SEIRD)")
+st.markdown(r" - **Infected (I)**: $$\frac{dI}{dt} = \sigma E - \gamma I$$, where $$\gamma$$ is the recovery rate (in SEIR/SEIRD).")
+st.markdown(r" - **Recovered (R)**: $$\frac{dR}{dt} = \gamma I$$, where $$\gamma$$ is the recovery rate.")
+st.markdown(r" - **Deceased (D)**: $$\frac{dD}{dt} = \theta I$$, where $$\theta$$ is the mortality rate. (only in SIDR/SEIRD)")
+
+st.subheader("Set Disease Parameters:")
+in_col1, in_col2 = st.columns(2)
+with in_col1:
+    beta = st.slider("Infection Rate (beta)", min_value=0.0, max_value=2.0, value=0.6, step=0.1)
+    sigma = st.slider("Incubation Rate (sigma, SEIR)", min_value=0.0, max_value=1.0, value=1.0/5.0, step=0.01)
+with in_col2:
+    gamma = st.slider("Recovery Rate (gamma)", min_value=0.0, max_value=1.0, value=1.0/7.0, step=0.01)
+    theta = st.slider("Mortality Rate (theta, SIDR/SEIRD)", min_value=0.0, max_value=0.5, value=0.02, step=0.01)
+
+# ============ Plot: Epidemic Model ============
+st.subheader("Epidemic Simulation:")
+col1, col2 = st.columns([0.33, 0.67])
+with col1:
+    model_choice = st.selectbox("Select Model:", ["SIR", "SEIR", "SIDR", "SEIRD"], index=3)
+    N = st.number_input("Total Population (N)", min_value=2, max_value=200000, value=100000, step=10)
+    days = st.slider("Simulation Days", min_value=10, max_value=365, value=180, step=10)
+    
+    st.write("Initial condition: 1 infected, 0 recovered/deceased/exposed")
+    I0 = 1
+    R0 = 0
+    D0 = 0
+    E0 = 0
+
+    t = np.linspace(0, days-1, days)  # e.g., days=90 -> t=0..89
+    # Ensure initial sums don't exceed N
+    sum_init = I0 + R0 + D0 + E0
+    if sum_init > N:
+        st.warning("Initial states exceed total population. Clamping E0 to fit.")
+        E0 = max(0, N - (I0 + R0 + D0))
+
+    S0 = N - I0 - R0 - D0 - E0
+    # ---- Solve the chosen model ----
+    if model_choice == "SIR":
+        y0 = (S0, I0, R0)
+        result = odeint(sir_model, y0, t, args=(N, beta, gamma))
+        S, I, R = result.T
+        E = np.zeros_like(S)
+        D = np.zeros_like(S)
+    elif model_choice == "SEIR":
+        y0 = (S0, E0, I0, R0)
+        result = odeint(seir_model, y0, t, args=(N, beta, sigma, gamma))
+        S, E, I, R = result.T
+        D = np.zeros_like(S)
+    elif model_choice == "SIDR":
+        y0 = (S0, I0, D0, R0)
+        result = odeint(sidr_model, y0, t, args=(N, beta, gamma, theta))
+        S, I, D, R = result.T
+        E = np.zeros_like(S)
+    elif model_choice == "SEIRD":
+        y0 = (S0, E0, I0, D0, R0)
+        result = odeint(seird_model, y0, t, args=(N, beta, sigma, gamma, theta))
+        S, E, I, D, R = result.T
+
+with col2:
+    fig, ax = plt.subplots(figsize=(6, 4))
+    # plt.ylim(-1, 5)
+    # plt.xlim(0, max(x_arr))
+    ax.plot(t, S, label="Susceptible", color="blue")
+    ax.plot(t, I, label="Infected", color="red")
+    ax.plot(t, R, label="Recovered", color="green")
+    if model_choice in ("SEIR", "SEIRD"):
+        ax.plot(t, E, label="Exposed", color="orange")
+    if model_choice in ("SIDR", "SEIRD"):
+        ax.plot(t, D, label="Deceased", color="black")
+    ax.set_xlabel("days")
+    ax.set_ylabel("Population")
+    ax.set_title(f"{model_choice} Simulation (N={N})")
+    ax.grid(True)
+    ax.legend()
+
+    st.pyplot(fig)
+
+

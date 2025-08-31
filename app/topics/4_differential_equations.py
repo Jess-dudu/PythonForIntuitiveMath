@@ -43,7 +43,8 @@ st.title("Differential Equations")
 st.subheader("Epidemic Models (SIR, SEIR, SIDR, SEIRD)")
 
 st.write(r'''Differential equations can be used to model the spread of infectious diseases in a population. 
-         Here we implement four common models: SIR, SEIR, SIDR, and **SEIRD**.''')
+         There are four common models: SIR, SEIR, SIDR, and SEIRD. The following equations describe the rate 
+         of change of each compartment over time for SEIRD model: ''')
 st.markdown(r" - **Susceptible (S)**: $$\frac{dS}{dt} = - \beta \frac{S I}{N}$$, where $$\beta$$ is the infection rate.")
 st.markdown(r" - **Exposed (E)**: $$\frac{dE}{dt} = \beta \frac{S I}{N} - \sigma E$$, where $$\sigma$$ is the incubation rate (in SEIR/SEIRD)")
 st.markdown(r" - **Infected (I)**: $$\frac{dI}{dt} = \sigma E - \gamma I$$, where $$\gamma$$ is the recovery rate (in SEIR/SEIRD).")
@@ -51,6 +52,7 @@ st.markdown(r" - **Recovered (R)**: $$\frac{dR}{dt} = \gamma I$$, where $$\gamma
 st.markdown(r" - **Deceased (D)**: $$\frac{dD}{dt} = \theta I$$, where $$\theta$$ is the mortality rate. (only in SIDR/SEIRD)")
 
 st.subheader("Set Disease Parameters:")
+
 in_col1, in_col2 = st.columns(2)
 with in_col1:
     beta = st.slider("Infection Rate (beta)", min_value=0.0, max_value=2.0, value=0.6, step=0.1)
@@ -61,7 +63,12 @@ with in_col2:
 
 # ============ Plot: Epidemic Model ============
 st.subheader("Epidemic Simulation:")
-col1, col2 = st.columns([0.33, 0.67])
+
+st.write(r'''Given the disease parameters and initial conditions, we use scipy's odeint function to 
+         integrate the differential equations, which gives us the number of individuals in each 
+         compartment over time.''')
+
+col1, col2 = st.columns([0.33, 0.63])
 with col1:
     model_choice = st.selectbox("Select Model:", ["SIR", "SEIR", "SIDR", "SEIRD"], index=3)
     N = st.number_input("Total Population (N)", min_value=2, max_value=200000, value=100000, step=10)

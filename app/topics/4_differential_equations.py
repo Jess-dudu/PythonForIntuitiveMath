@@ -40,9 +40,19 @@ def seird_model(y, t, N, beta, sigma, gamma, theta):
 st.markdown('''<style> .katex-html { text-align: left; } </style>''', unsafe_allow_html=True)
 
 st.title("Differential Equations")
+
+st.write(r'''
+         Differential equations can be used to model and predict various real-world phenomena, 
+         including expansion of the universe, climate change, pandemic models, financial markets,
+         and much more. It is also central to many fundamental debates such as is the future deterministic? 
+         Does free will exist or not? For more interesting discussions, please refer to 
+         **Dr. Sabine Hossenfelder**'s YouTube video about Differential Equations: 
+         https://www.youtube.com/watch?v=Em339AlejIs 
+         ''')
+
 st.subheader("Epidemic Models (SIR, SEIR, SIDR, SEIRD)")
 
-st.write(r'''Differential equations can be used to model the spread of infectious diseases in a population. 
+st.write(r'''A concrete example of differential equations is to model the spread of infectious diseases. 
          There are four common models: SIR, SEIR, SIDR, and SEIRD. The following equations describe the rate 
          of change of each compartment over time for SEIRD model: ''')
 st.markdown(r" - **Susceptible (S)**: $$\frac{dS}{dt} = - \beta \frac{S I}{N}$$, where $$\beta$$ is the infection rate.")

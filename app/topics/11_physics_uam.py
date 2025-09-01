@@ -14,8 +14,9 @@ st.markdown('''<style> .katex-html { text-align: left; } </style>''', unsafe_all
 
 st.subheader("Graphing Uniformly Accelerated Motion")
 
-st.latex(r"\qquad Velocity: \quad v(t) = v_i + a t")
-st.latex(r"\qquad Position: \quad x(t) = v_i t + \frac{1}{2} a t^2")
+st.latex(r"\qquad Acceleration: \quad a(t) = \dot{v}(t) = a")
+st.latex(r"\qquad \qquad Velocity: \quad v(t) = \dot{x}(t) = v_i + a t")
+st.latex(r"\qquad \qquad Position: \quad x(t) = v_i t + \frac{1}{2} a t^2")
 st.write("\n")
 
 in_col1, in_col2, in_col3 = st.columns(3)
@@ -103,11 +104,11 @@ with col2:
 
 st.subheader("Derivation of Common UAM Equations")
 
-st.markdown(r'''Starting from rest: $v_i = 0$, trapezoid simplifies to a right angle triangle''')
-st.markdown(r'''- $v_f = a t \qquad \quad$ ($v_f$ is triangle height and $t$ is triangle base)''')
+st.markdown(r'''**Starting from rest**: $v_i = 0$, trapezoid simplifies to a right angle triangle''')
+st.markdown(r'''- $v_f = a t \qquad \qquad \quad$ ($v_f$ is triangle height and $t$ is triangle base)''')
 st.markdown(r'''- $\Delta x = \frac{1}{2} v_f t = \frac{1}{2} a t^2 \quad$ ($\Delta x$ is triangle area)''')
-st.markdown(r'''General case: $v_i \neq 0$''')
-st.markdown(r'''- $v_f = v_0 + a t \quad \Leftrightarrow \quad a = (v_f - v_i)/t$''')
+st.markdown(r'''**General case**: $v_i \neq 0$''')
+st.markdown(r'''- $v_f = v_i + a t \quad \Leftrightarrow \quad a = (v_f - v_i)/t$''')
 st.markdown(r'''- $\Delta x = v_i t + \frac{1}{2} a t^2 \quad$ (sum of rectangle and triangle area)''')
 st.markdown(r'''- $\Delta x = \frac{1}{2} (v_i + v_f) t \quad$ (trapezoid area)''')
 st.markdown(r'''- $2 a \Delta x = (v_i + v_f) a t = (v_f + v_i) (v_f - v_i)= {v_f}^2 - {v_i}^2\quad$ (substritute $t = (v_f - v_i)/a$)''')

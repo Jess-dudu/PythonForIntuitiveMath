@@ -12,6 +12,7 @@ def plot_polynomial_standard(a0, a1, a2=0, a3=0, a4=0, a5=0):
     plt.axvline(color='black')
     plt.axhline(color='black')
     plt.plot(x, func(x), lw=3, color ='blue')
+    fig.suptitle(f"Standard Form: a2 = {a2}, a1 = {a1}, a0 = {a0}")
     plt.grid()
     # plt.show()
 
@@ -27,6 +28,7 @@ def plot_polynomial_factor(a, r1, r2):
     plt.axvline(color='black')
     plt.axhline(color='black')
     plt.plot(x, func(x), lw=3, color ='green')
+    fig.suptitle(f"Factored Form: a = {a}, r1 = {r1}, r2 = {r2}")
     plt.grid()
     # plt.show()
 
@@ -38,14 +40,14 @@ st.title("Quadratics and Optimization")
 
 st.markdown('''<style> .katex-html { text-align: left; } </style>''', unsafe_allow_html=True)
 
-st.header("Standard Form and Factor Form")
+st.header("Standard Form and Factored Form")
 
 st.write("Polynomial function in standard form:")
 st.latex(r'''
     \qquad f(x) = a_n x^n + a_{n-1} x^{n-1} + \ldots + a_1 x + a_0, \qquad \quad a_i \in \mathbb{R}, i \in [0, n]
     ''')
 
-st.write("Polynomial function in factor form:")
+st.write("Polynomial function in factored form:")
 st.latex(r'''
     \qquad f(x) = a (x - r_{n}) (x - r_{n-1}) \cdots (x - r_1), \qquad \quad a, r_i \in \mathbb{R}, i \in [1, n]
     ''')
@@ -62,9 +64,9 @@ with fig_col1:
     st.pyplot(fig) # instead of plt.show()
 
 with fig_col2:
-    r1 = st.slider(f'Factor form: $r_1$', min_value=-10.0, max_value=10.0, value=-2.0, step=0.1)
-    r2 = st.slider(f'Factor form: $r_2$', min_value=-10.0, max_value=10.0, value=2.0, step=0.1)
-    a  = st.slider(f'Factor form: $a$', min_value=-2.0, max_value=2.0, value=1.0, step=0.1)
+    r1 = st.slider(f'Factored form: $r_1$', min_value=-10.0, max_value=10.0, value=-2.0, step=0.1)
+    r2 = st.slider(f'Factored form: $r_2$', min_value=-10.0, max_value=10.0, value=2.0, step=0.1)
+    a  = st.slider(f'Factored form: $a$', min_value=-2.0, max_value=2.0, value=1.0, step=0.1)
 
     fig2 = plot_polynomial_factor(a, r1, r2)
     # ...

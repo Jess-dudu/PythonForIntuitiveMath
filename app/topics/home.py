@@ -6,10 +6,12 @@ st.write('''
          This project started with IPython Notebook on Google Colab to help demonstrating 
          and understanding Math topics with interactive graphing, visualization, data 
          analysis & simulation. For better accessiblity and interaction, it is 
-         switched to utilize streamlit and deployed onto two cloud servers:  \n
+         switched to utilize streamlit and deployed onto two free cloud servers:  \n
 
-         - Hugging Face Space: https://huggingface.co/spaces/Jess-dudu/IntuitiveMath
-         - Streamlit Server: https://pythonforintuitivemath.streamlit.app/
+         - HuggingFace Cloud Server (so far, apps respond faster):  
+           - https://huggingface.co/spaces/Jess-dudu/IntuitiveMath
+         - Streamlit Community Server (usually need to wait for apps to be brough up):  
+           - https://pythonforintuitivemath.streamlit.app/
          ''')
 
 st.write("\n")

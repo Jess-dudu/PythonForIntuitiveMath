@@ -44,32 +44,32 @@ st.title("Differential Equations")
 st.write(r'''
          Differential equations can be used to model and predict various real-world phenomena, 
          including expansion of the universe, climate change, pandemic models, financial markets,
-         and much more. It is also central to many fundamental debates such as is the future deterministic? 
-         Does free will exist or not? For more interesting discussions, please refer to 
-         **Dr. Sabine Hossenfelder**'s YouTube video about Differential Equations: 
+         and much more. It is also central to many fundamental debates such as is the future 
+         deterministic (Laplace's demon)? Does free will exist or not? For more in-depth discussion, 
+         please refer to **Dr. Sabine Hossenfelder**'s YouTube video about Differential Equations: 
          https://www.youtube.com/watch?v=Em339AlejIs 
          ''')
 
 st.subheader("Epidemic Models (SIR, SEIR, SIDR, SEIRD)")
 
 st.write(r'''A concrete example of differential equations is to model the spread of infectious diseases. 
-         There are four common models: SIR, SEIR, SIDR, and SEIRD. The following equations describe the rate 
-         of change of each compartment over time for SEIRD model: ''')
-st.markdown(r" - **Susceptible (S)**: $$\frac{dS}{dt} = - \beta \frac{S I}{N}$$, where $$\beta$$ is the infection rate.")
-st.markdown(r" - **Exposed (E)**: $$\frac{dE}{dt} = \beta \frac{S I}{N} - \sigma E$$, where $$\sigma$$ is the incubation rate (in SEIR/SEIRD)")
-st.markdown(r" - **Infected (I)**: $$\frac{dI}{dt} = \sigma E - \gamma I$$, where $$\gamma$$ is the recovery rate (in SEIR/SEIRD).")
-st.markdown(r" - **Recovered (R)**: $$\frac{dR}{dt} = \gamma I$$, where $$\gamma$$ is the recovery rate.")
+         There are four common models: SIR, SEIR, SIDR, and SEIRD, where SEIRD models more factors to 
+         determine the rate of change of each compartment over time: ''')
+st.markdown(r" - **Susceptible (S)**: $$\frac{dS}{dt} = - \beta \frac{S I}{N}$$, where $$\beta$$ is the infection rate")
+st.markdown(r" - **Exposed (E)**: $$\frac{dE}{dt} = \beta \frac{S I}{N} - \sigma E$$, where $$\sigma$$ is the incubation rate (only in SEIR/SEIRD)")
+st.markdown(r" - **Infected (I)**: $$\frac{dI}{dt} = \sigma E - (\gamma + \theta) I$$, where recovered and deceased leave this compartment")
+st.markdown(r" - **Recovered (R)**: $$\frac{dR}{dt} = \gamma I$$, where $$\gamma$$ is the recovery rate")
 st.markdown(r" - **Deceased (D)**: $$\frac{dD}{dt} = \theta I$$, where $$\theta$$ is the mortality rate. (only in SIDR/SEIRD)")
 
-st.subheader("Set Disease Parameters:")
+st.subheader("Set Parameters of a Given Disease:")
 
 in_col1, in_col2 = st.columns(2)
 with in_col1:
-    beta = st.slider("Infection Rate (beta)", min_value=0.0, max_value=2.0, value=0.6, step=0.1)
-    sigma = st.slider("Incubation Rate (sigma, SEIR)", min_value=0.0, max_value=1.0, value=1.0/5.0, step=0.01)
+    beta = st.slider(r"Infection Rate $\beta$", min_value=0.0, max_value=2.0, value=0.6, step=0.1)
+    sigma = st.slider(r"Incubation Rate $\sigma$ (for SEIR/SEIRD)", min_value=0.0, max_value=1.0, value=1.0/5.0, step=0.01)
 with in_col2:
-    gamma = st.slider("Recovery Rate (gamma)", min_value=0.0, max_value=1.0, value=1.0/7.0, step=0.01)
-    theta = st.slider("Mortality Rate (theta, SIDR/SEIRD)", min_value=0.0, max_value=0.5, value=0.02, step=0.01)
+    gamma = st.slider(r"Recovery Rate $\gamma$", min_value=0.0, max_value=1.0, value=1.0/7.0, step=0.01)
+    theta = st.slider(r"Mortality Rate $\theta$ (for SIDR/SEIRD)", min_value=0.0, max_value=0.5, value=0.02, step=0.01)
 
 # ============ Plot: Epidemic Model ============
 st.subheader("Epidemic Simulation:")
@@ -133,7 +133,7 @@ with col2:
         ax.plot(t, D, label="Deceased", color="black")
     ax.set_xlabel("days")
     ax.set_ylabel("Population")
-    ax.set_title(f"{model_choice} Simulation (N={N})")
+    ax.set_title(f"{model_choice} Simulation (Population={N})")
     ax.grid(True)
     ax.legend()
 

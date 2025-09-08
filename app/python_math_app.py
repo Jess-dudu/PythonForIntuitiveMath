@@ -33,6 +33,12 @@ topic4_differential = st.Page(
     icon=":material/interactive_space:",
 )
 
+topic5_markov_pagerank = st.Page(
+    page="topics/5_markov_pagerank.py",
+    title="Markov Chain and PageRank",
+    icon=":material/interactive_space:",
+)
+
 topic11_uam = st.Page(
     page="topics/11_physics_uam.py",
     title="Uniformly Accelerated Motion",
@@ -55,6 +61,7 @@ pg = st.navigation(
             topic1_hyperbolic, 
             topic2_analytic_geometry, 
             topic4_differential, 
+            topic5_markov_pagerank,
             topic11_uam
         ],
         "Tools": [

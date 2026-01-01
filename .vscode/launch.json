@@ -4,18 +4,17 @@
     // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
-
         {
-            "name": "Python:Streamlit",
+            "name": "Streamlit: Current File",
             "type": "debugpy",
             "request": "launch",
             "module": "streamlit",
             "args": [
                 "run",
-                "app/python_math_app.py",
-                "--server.port",
-                "8501"
-            ]
+                "${file}"
+            ],
+            "console": "integratedTerminal",
+            "justMyCode": true
         }
     ]
 }

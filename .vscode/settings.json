@@ -1,0 +1,29 @@
+{
+  "python.defaultInterpreterPath": "/usr/local/bin/python3",
+  "files.associations": {
+    "justfile": "makefile"
+  },
+  "python.analysis.extraPaths": [
+    "${workspaceFolder}/src",
+    "/home/vscode/.local/lib"
+  ],
+  "python.terminal.activateEnvironment": true,
+  "python.testing.pytestEnabled": true,
+    "python.testing.pytestArgs": [
+    "tests",
+    "-s"
+  ],
+
+  "ruff.lint.enable": true,
+
+  "[python]": {
+    "editor.defaultFormatter": "charliermarsh.ruff",
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+      "source.fixAll.ruff": "explicit",
+      "source.organizeImports.ruff": "explicit"
+    }
+  },
+  "python-envs.defaultEnvManager": "ms-python.python:system",
+  "python-envs.pythonProjects": []
+}

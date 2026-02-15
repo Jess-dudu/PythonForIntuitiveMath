@@ -47,7 +47,7 @@ fig = px.choropleth(
 )
 
 # 4. Display in Streamlit
-st.plotly_chart(fig, use_container_width=True)
+st.plotly_chart(fig, width="stretch")
 
 # Optional: show top/bottom states by the chosen metric
 if st.checkbox("Show top 10 states by selected metric"):

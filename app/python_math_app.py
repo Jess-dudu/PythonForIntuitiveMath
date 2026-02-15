@@ -9,6 +9,18 @@ home_page = st.Page(
     default=True,
 )
 
+ds1_visualize_us_data = st.Page(
+    page="ds_tasks/1_visualize_us_data.py",
+    title="Visualize US Population",
+    icon=":material/database_search:",
+)
+
+sim1_fastest_rolling_car = st.Page(
+    page="simulation/1_fastest_rolling_car.py",
+    title="Fastest Rolling Car",
+    icon=":material/speed:",
+)
+
 topic1_hyperbolic = st.Page(
     page="topics/1_hyperbolic_functions.py",
     title="Hyperbolic Functions",
@@ -51,18 +63,15 @@ tool1_loan_calculator = st.Page(
     icon=":material/attach_money:",
 )
 
-ds1_visualize_us_data = st.Page(
-    page="ds_tasks/1_visualize_us_data.py",
-    title="Visualize US Population",
-    icon=":material/database_search:",
-)
-
 # --- Navigation Setup with Sections ---
 pg = st.navigation(
     {
         "Home": [home_page],
         "Data Science": [
             ds1_visualize_us_data,
+        ],
+        "Simulations": [
+            sim1_fastest_rolling_car,
         ],
         "Math Topics": [
             topic3_quadratics,

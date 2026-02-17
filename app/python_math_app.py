@@ -15,6 +15,12 @@ ds1_visualize_us_data = st.Page(
     icon=":material/database_search:",
 )
 
+ds2_visualize_crime_data = st.Page(
+    page="ds_tasks/2_vis_us_crime_data.py",
+    title="Visualize US Crime Data",
+    icon=":material/database_search:",
+)
+
 sim1_fastest_rolling_car = st.Page(
     page="simulation/1_fastest_rolling_car.py",
     title="Fastest Rolling Car",
@@ -69,6 +75,7 @@ pg = st.navigation(
         "Home": [home_page],
         "Data Science": [
             ds1_visualize_us_data,
+            ds2_visualize_crime_data,
         ],
         "Simulations": [
             sim1_fastest_rolling_car,

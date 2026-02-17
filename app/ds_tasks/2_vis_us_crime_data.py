@@ -67,8 +67,12 @@ with col1:
         step=1,
     )
 
-    color_metric = st.selectbox("Metric to color", options=metric_candidates, index=0)
-    color_scale = "YlOrRd"
+    color_metric = st.selectbox(
+        "Metric to visualize", options=metric_candidates, index=0
+    )
+
+    color_scale = "Blues"  # "YlOrRd"
+
 
 with col2:
     st.write("Data preview:")
@@ -93,22 +97,11 @@ fig = px.choropleth(
 st.plotly_chart(fig, width="stretch")
 
 # Top-10 bar chart using st.bar_chart (DataFrame indexed by State)
-show_top10 = st.checkbox("Show top 10 states")
-
+show_top10 = st.checkbox("Show top 10 states", value=True)
 if show_top10:
-    top10 = (
-        yr_df.loc[yr_df[color_metric].notna()]
-        .sort_values(by=color_metric, ascending=False)
-        .head(10)
-    )
-    if top10.empty:
-        st.write("No numeric data available for the selected metric/year.")
-    else:
-        bar_df = top10.set_index("State")[[color_metric]].astype(float)
-        bar_df = bar_df.rename(columns={color_metric: "value"})
-        # enforce display order
-        ordered_states = bar_df.index.tolist()
-        bar_df.index = pd.CategoricalIndex(
-            bar_df.index, categories=ordered_states, ordered=True
-        )
-        st.bar_chart(bar_df)
+    top10 = yr_df.sort_values(by=color_metric, ascending=False).head(10)
+    top10 = top10.set_index("State")[[color_metric]]
+    top10 = top10.rename(columns={color_metric: "value"})
+
+    # st.bar_chart(top10.sort_values(by="value", ascending=True))
+    st.bar_chart(top10, sort="-value")

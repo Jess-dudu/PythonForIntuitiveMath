@@ -1,6 +1,7 @@
 # Python dependencies required for development
 streamlit
 plotly
+us
 
 numpy
 matplotlib

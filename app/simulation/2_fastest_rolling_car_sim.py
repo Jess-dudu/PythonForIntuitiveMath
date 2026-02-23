@@ -4,33 +4,6 @@ import matplotlib.pyplot as plt
 import numpy as np
 import streamlit as st
 
-st.title("Fastest Rolling Car Simulation")
-
-st.write(""" This is a physics simulation of an off-center wheel rolling down 
-         a sloped track. We can simulate to find out the best time to 
-         reach finish line with configurable track length, track slope, 
-         and the off-center weight distance ratio and most importantly, 
-         off-center angle, tilting up (0 degree) and forward (90 degree). 
-         """)
-
-# Simulation parameters
-mass = 10
-simulation_time = 15
-wheel_radius = 2.0
-
-col1, col2 = st.columns([1, 1])
-with col1:
-    slope_length = st.slider("Track length", 1, 5, 2)
-    center_offset = st.slider("Weight offset from center", 0.0, 1.0, 0.0)
-
-with col2:
-    slope_angle = st.slider("Slope angle (degrees)", 5, 45, 15)
-    weight_start_angle = st.slider("Weight start angle (degrees)", -180, 180, 40)
-
-# track length is multiple of wheel circumference
-slope_length = slope_length * 2 * math.pi * wheel_radius
-center_offset = center_offset * wheel_radius  # convert to actual distance
-
 
 # Physics simulation
 def simulate_rolling_wheel(
@@ -105,6 +78,86 @@ def simulate_rolling_wheel(
         np.array(rotations),
         finish_time,
     )
+
+
+def plot_off_center_wheel(
+    radius, center_offset, weight_start_angle, slope_angle=None, figsize=(4, 4)
+):
+    fig, ax = plt.subplots(figsize=figsize)
+    # wheel circle
+    circle = plt.Circle((0, 0), radius, fill=False, linewidth=2, color="#333")
+    ax.add_patch(circle)
+    # compute weight point (angle measured from top/upwards: 0 deg = top)
+    theta_rad = math.radians(weight_start_angle)
+    wx = center_offset * math.sin(theta_rad)
+    wy = center_offset * math.cos(theta_rad)
+    # draw radial line and weight marker
+    ax.plot([0, wx], [0, wy], color="#ff7f0e", linewidth=3)
+    ax.plot(wx, wy, "o", color="#d62728", markersize=10)
+    # center marker
+    ax.plot(0, 0, "o", color="#1f77b4", markersize=6)
+    # formatting
+    pad = 0.5
+    ax.set_xlim(-radius - pad, radius + pad)
+    ax.set_ylim(-radius - pad, radius + pad)
+    ax.set_aspect("equal", "box")
+    ax.axis("off")
+    # draw slope line so the wheel appears to sit on it at (0, -radius)
+    if slope_angle is not None:
+        # slope angle (beta) is orientation of tangent line
+        beta = math.radians(-slope_angle)
+        m = math.tan(beta)
+        # radial vector to contact point is perpendicular to tangent
+        # use opposite direction so contact is on the lower side of the wheel
+        radial_angle = beta - math.pi / 2
+        cx = radius * math.cos(radial_angle)
+        cy = radius * math.sin(radial_angle)
+        xlims = ax.get_xlim()
+        xs = np.linspace(xlims[0] - 1, xlims[1] + 1, 2)
+        ys = m * (xs - cx) + cy
+        ax.plot(xs, ys, color="#2ca02c", linewidth=2, linestyle="--")
+        # mark contact point
+        ax.plot(cx, cy, "x", color="#2ca02c", markersize=8)
+    ax.set_title(f"Offset: {center_offset:.2f} m — Angle: {weight_start_angle}°")
+    return fig, ax
+
+
+st.title("Fastest Rolling Car Simulation")
+
+st.write(""" This is a physics simulation of an off-center wheel rolling down 
+         a sloped track. We can simulate to find out the best time to 
+         reach finish line with configurable track length, track slope, 
+         and the off-center weight distance ratio and most importantly, 
+         off-center angle, tilting up (0 degree) and forward (90 degree). 
+         """)
+
+# Simulation parameters
+mass = 10
+simulation_time = 15
+wheel_radius = 2.0
+
+
+col1, col2 = st.columns([1, 1])
+with col1:
+    slope_length = st.slider("Track length", 1, 5, 2)
+    slope_angle = st.slider("Slope angle (degrees)", 5, 45, 15)
+    center_offset = st.slider("Weight offset from center", 0.0, 1.0, 0.0)
+    weight_start_angle = st.slider("Weight start angle (degrees)", -180, 180, 40)
+
+# track length is multiple of wheel circumference
+slope_length = slope_length * 2 * math.pi * wheel_radius
+center_offset = center_offset * wheel_radius  # convert to actual distance
+
+with col2:
+    st.write("The wheel on sloped track:")
+    fig_wheel, ax_wheel = plot_off_center_wheel(
+        wheel_radius,
+        center_offset,
+        weight_start_angle,
+        slope_angle=slope_angle,
+        figsize=(2, 2),
+    )
+    st.pyplot(fig_wheel)
 
 
 # Run simulation

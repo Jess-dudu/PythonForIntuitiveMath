@@ -27,6 +27,12 @@ sim1_fastest_rolling_car = st.Page(
     icon=":material/speed:",
 )
 
+sim2_fastest_rolling_car_sim = st.Page(
+    page="simulation/2_fastest_rolling_car_sim.py",
+    title="Fastest Rolling Car Simulation",
+    icon=":material/speed:",
+)
+
 topic1_hyperbolic = st.Page(
     page="topics/1_hyperbolic_functions.py",
     title="Hyperbolic Functions",
@@ -79,6 +85,7 @@ pg = st.navigation(
         ],
         "Simulations": [
             sim1_fastest_rolling_car,
+            sim2_fastest_rolling_car_sim,
         ],
         "Math Topics": [
             topic3_quadratics,

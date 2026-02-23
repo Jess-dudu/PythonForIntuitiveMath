@@ -13,7 +13,7 @@ col1, col2 = st.columns([1, 1])
 
 with col1:
     st.write(""" Minimizing rotational kinetic energy can resule in more translational kinetic energy
-         and thus a faster car. Lighter big wheels and heavier thin axle are recommended for faster cars.
+         and thus a faster car. Lighter big wheels and heavier thin axle are recommended for faster speed.
          However, an easier way is to use a light can full of drink since water is heavy and will not 
          rotate much. A comparison video is shown.
          """)
@@ -46,10 +46,11 @@ st.subheader("Faster on Straight Slope ?")
 col1, col2 = st.columns([1, 1])
 
 with col1:
-    st.write(""" We can exploit similar ideas to minimize the time on a straight track by having an off-center mass distribution.
-            The rolling will have a wobbling motion but it can start with a faster initial acceleration and slower acceleration when
-             mass is rotated to the lowest point (similar to brachistochrone curve effect). To achieve this, the off-center mass 
-             should be tilt up and forward at starting point. Here is a video showing such a wheel vs. full coke can.
+    st.write(""" Similar ideas can be achieved by having an off-center mass axel on the wheel. The wheel will have 
+             a wobbling motion but it can start with a faster initial acceleration and slower acceration when mass 
+             is rotated to the lowest point (similar to brachistochrone curve effect). The off-center mass should 
+             be tilt up and forward at starting point (not straight up!). Here is a video showing the final design 
+             (won with a large margin) vs. full coke can.
             """)
 
 with col2:

@@ -21,9 +21,15 @@ ds2_visualize_crime_data = st.Page(
     icon=":material/database_search:",
 )
 
+ds3_visualize_iq_data = st.Page(
+    page="ds_tasks/3_vis_world_iq_data.py",
+    title="Visualize World IQ Data",
+    icon=":material/database_search:",
+)
+
 sim1_fastest_rolling_car = st.Page(
     page="simulation/1_fastest_rolling_car.py",
-    title="Fastest Rolling Car",
+    title="Fastest Rolling Car Competition",
     icon=":material/speed:",
 )
 
@@ -82,6 +88,7 @@ pg = st.navigation(
         "Data Science": [
             ds1_visualize_us_data,
             ds2_visualize_crime_data,
+            ds3_visualize_iq_data,
         ],
         "Simulations": [
             sim1_fastest_rolling_car,

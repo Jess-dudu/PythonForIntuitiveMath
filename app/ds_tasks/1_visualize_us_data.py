@@ -50,6 +50,7 @@ fig = px.choropleth(
 st.plotly_chart(fig, width="stretch")
 
 # Optional: show top/bottom states by the chosen metric
-if st.checkbox("Show top 10 states by selected metric"):
+show_top10 = st.checkbox("Show top 10 states by selected metric")
+if show_top10:
     desc = state_population.sort_values(by=metric, ascending=False).head(10)
     st.bar_chart(desc.set_index("state")[metric])

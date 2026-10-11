@@ -68,8 +68,8 @@ def simulate_rolling_wheel(
         if x >= target_distance:
             finish_time = (i + 1) * dt
             break
-    else:
-        finish_time = None
+        else:
+            finish_time = None
 
     return (
         np.array(times),
@@ -139,10 +139,10 @@ wheel_radius = 2.0
 
 col1, col2 = st.columns([1, 1])
 with col1:
+    center_offset = st.slider("Weight offset from center", 0.0, 1.0, 0.4)
+    weight_start_angle = st.slider("Weight start angle (degrees)", -180, 180, 40)
     slope_length = st.slider("Track length", 1, 5, 2)
     slope_angle = st.slider("Slope angle (degrees)", 5, 45, 15)
-    center_offset = st.slider("Weight offset from center", 0.0, 1.0, 0.0)
-    weight_start_angle = st.slider("Weight start angle (degrees)", -180, 180, 40)
 
 # track length is multiple of wheel circumference
 slope_length = slope_length * 2 * math.pi * wheel_radius
@@ -174,7 +174,10 @@ times, positions, velocities, rotations, finish_time = simulate_rolling_wheel(
 # Display Simulation Result
 st.subheader("Simulation Result")
 col1, col2, col3, col4 = st.columns(4)
-col1.metric("Time to Finish", f"{finish_time:.3f} s")
+if finish_time:
+    col1.metric("Time to Finish", f"{finish_time:.3f} s")
+else:
+    col1.metric("Time to Finish", "N/A")
 col2.metric("Final Distance", f"{positions[-1]:.3f} m")
 col3.metric("Total Rotations", f"{rotations[-1] / (2 * np.pi):.2f}")
 col4.metric("Final Velocity", f"{velocities[-1]:.3f} m/s")
